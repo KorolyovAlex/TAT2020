@@ -10,10 +10,11 @@
         /// </summary>
         /// <param name="str"> Line that was entered in console </param>
         /// <returns> The length of the longest sequence of similar symbols </returns>
-        public int CountSequence(string str)
+        public int CountSimilarSymbolsSequence(string str)
         {
             int maxLength = 1, counter = 1;
             str.ToLower();
+
             for (int i = 0; i < str.Length - 1; i++)
             {
                 if (str[i] == str[i + 1])
@@ -29,6 +30,13 @@
                     counter = 1;
                 }
             }
+
+            //In case of longest sequence in the end of line
+            if (counter > maxLength) 
+            {
+                maxLength = counter;
+            }
+
             return maxLength;
         }
     }

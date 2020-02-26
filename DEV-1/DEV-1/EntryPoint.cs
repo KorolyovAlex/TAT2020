@@ -10,12 +10,22 @@ namespace DEV_1
         /// <summary>
         /// Main method
         /// </summary>
-        static void Main()
+        /// <param name="args"> Command line arguments </param>
+        static void Main(string[] args)
         {
-            Console.WriteLine("Enter your line:");
-            string line = Console.ReadLine();
-            StringAnalyzer analyzer = new StringAnalyzer();
-            Console.WriteLine(analyzer.CountSequence(line));
+            try
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    Console.WriteLine($"Your line: {args[i]}");
+                    StringAnalyzer analyzer = new StringAnalyzer();
+                    Console.WriteLine(analyzer.CountSimilarSymbolsSequence(args[i]));
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
