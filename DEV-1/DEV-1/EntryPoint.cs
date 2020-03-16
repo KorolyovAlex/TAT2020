@@ -15,11 +15,14 @@ namespace DEV_1
         {
             try
             {
-                for (int i = 0; i < args.Length; i++)
+                foreach (string line in args)
                 {
-                    Console.WriteLine($"Your line: {args[i]}");
+                    Console.WriteLine($"Your line: {line}");
                     StringAnalyzer analyzer = new StringAnalyzer();
-                    Console.WriteLine(analyzer.CountSimilarSymbolsSequence(args[i]));
+                    Console.WriteLine($"{analyzer.CountSimilarSymbolsSequence(line)} similar symbol(s)");
+                    Console.WriteLine($"{analyzer.CountDifferentSymbolsSequence(line)} different symbol(s)");
+
+                    Console.Write("\n");
                 }
             }
             catch(Exception ex)
