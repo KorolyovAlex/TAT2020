@@ -3,54 +3,54 @@
 namespace DEV_1
 {
     /// <summary>
-    /// Analyzer of entred line
+    /// Analyzer of entered String
     /// </summary>
     public class StringAnalyzer
     {
         /// <summary>
-        /// Checking is line correct and gives count condition
+        /// Counts the length of the longest sequence of similar symbols in given string
         /// </summary>
-        /// <param name="str"> Line that was given in command line </param>
+        /// <param name="textLine"> String to count longest sequence </param>
         /// <returns> The length of the longest sequence of similar symbols </returns>
-        public int CountSimilarSymbolsSequence(string str)
+        public int CountSimilarSymbolsSequence(string textLine)
         {
-            if (String.IsNullOrEmpty(str))
+            if (String.IsNullOrEmpty(textLine))
             {
                 return 0;
             }
 
-            return CountSequence(str, (x, y) => x == y);
+            return CountSequence(textLine, (x, y) => x == y);
         }
 
         /// <summary>
-        /// Checking is line correct and gives count condition
+        /// Counts the length of the longest sequence of different symbols in given string
         /// </summary>
-        /// <param name="str"> Line that was given in command line </param>
+        /// <param name="textLine"> String to count longest sequence </param>
         /// <returns> The length of the longest sequence of different symbols </returns>
-        public int CountDifferentSymbolsSequence(string str)
+        public int CountDifferentSymbolsSequence(string textLine)
         {
-            if(String.IsNullOrEmpty(str))
+            if(String.IsNullOrEmpty(textLine))
             {
                 return 0;
             }
 
-            return CountSequence(str, (x, y) => x != y);
+            return CountSequence(textLine, (x, y) => x != y);
         }
 
         /// <summary>
         /// Counts the length of the longest sequence of similar symbols
         /// </summary>
-        /// <param name="str"> Line that was given in command line </param>
+        /// <param name="textLine"> String to count longest sequence </param>
         /// <param name="func"> Compare condition </param>
         /// <returns> The length of the longest sequence of symbols according to condition func </returns>
-        private int CountSequence(string str, Func<char, char, bool> func)
+        private int CountSequence(string textLine, Func<char, char, bool> func)
         {
             int maxLength = 1, counter = 1;
-            str = str.ToLower();
+            textLine = textLine.ToLower();
 
-            for (int i = 0; i < str.Length - 1; i++)
+            for (int i = 0; i < textLine.Length - 1; i++)
             {
-                if (func(str[i], str[i + 1]))
+                if (func(textLine[i], textLine[i + 1]))
                 {
                     counter++;
                 }

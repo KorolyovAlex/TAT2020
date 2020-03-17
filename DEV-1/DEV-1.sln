@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEV-1", "DEV-1\DEV-1.csproj", "{14BEC7BE-429D-456C-9922-BCB3D25BD2F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEV-1StringAnalyzerTests", "DEV-1StringAnalyzerTests\DEV-1StringAnalyzerTests.csproj", "{5A15873F-4CB4-46FF-9ACA-5B17A49D1EA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEV-1Tests", "DEV-1StringAnalyzerTests\DEV-1Tests.csproj", "{5A15873F-4CB4-46FF-9ACA-5B17A49D1EA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
