@@ -8,49 +8,47 @@ namespace DEV_1
     public class StringAnalyzer
     {
         /// <summary>
-        /// Counts the length of the longest sequence of similar symbols in given string
+        /// Returns the length of the longest sequence of similar symbols in given string
         /// </summary>
-        /// <param name="textLine"> String to count longest sequence </param>
-        /// <returns> The length of the longest sequence of similar symbols </returns>
-        public int CountSimilarSymbolsSequence(string textLine)
+        /// <param name="inputString"> Inputed string </param>
+        public int CountSimilarSymbolsSequence(string inputString)
         {
-            if (String.IsNullOrEmpty(textLine))
+            if (String.IsNullOrEmpty(inputString))
             {
                 return 0;
             }
 
-            return CountSequence(textLine, (x, y) => x == y);
+            return CountSequence(inputString, (x, y) => x == y);
         }
 
         /// <summary>
-        /// Counts the length of the longest sequence of different symbols in given string
+        /// Returns the length of the longest sequence of different symbols in given string
         /// </summary>
-        /// <param name="textLine"> String to count longest sequence </param>
-        /// <returns> The length of the longest sequence of different symbols </returns>
-        public int CountDifferentSymbolsSequence(string textLine)
+        /// <param name="inputString"> Inputed string </param>
+        public int CountDifferentSymbolsSequence(string inputString)
         {
-            if(String.IsNullOrEmpty(textLine))
+            if(String.IsNullOrEmpty(inputString))
             {
                 return 0;
             }
 
-            return CountSequence(textLine, (x, y) => x != y);
+            return CountSequence(inputString, (x, y) => x != y);
         }
 
         /// <summary>
-        /// Counts the length of the longest sequence of similar symbols
+        /// Counts the length of the longest sequence of symbols according to condition func
         /// </summary>
-        /// <param name="textLine"> String to count longest sequence </param>
+        /// <param name="inputString"> Inputed string </param>
         /// <param name="func"> Compare condition </param>
-        /// <returns> The length of the longest sequence of symbols according to condition func </returns>
-        private int CountSequence(string textLine, Func<char, char, bool> func)
+        /// <returns> The length of the longest sequence of symbols </returns>
+        private int CountSequence(string inputString, Func<char, char, bool> func)
         {
             int maxLength = 1, counter = 1;
-            textLine = textLine.ToLower();
+            inputString = inputString.ToLower();
 
-            for (int i = 0; i < textLine.Length - 1; i++)
+            for (int i = 0; i < inputString.Length - 1; i++)
             {
-                if (func(textLine[i], textLine[i + 1]))
+                if (func(inputString[i], inputString[i + 1]))
                 {
                     counter++;
                 }
@@ -64,7 +62,7 @@ namespace DEV_1
                 }
             }
 
-            //In case of longest sequence in the end of line
+            //In case of longest sequence in the end of string
             if (counter > maxLength) 
             {
                 maxLength = counter;
