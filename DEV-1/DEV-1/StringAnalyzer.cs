@@ -36,7 +36,7 @@ namespace DEV_1
         }
 
         /// <summary>
-        /// Checks if the string is it empty or has no refernce
+        /// Checks if the string is empty or has no refernce
         /// </summary>
         /// <param name="inputString">String to validate</param>
         /// <returns>True if the string is empty and false if it's not</returns>
