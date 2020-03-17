@@ -13,7 +13,7 @@ namespace DEV_1
         /// <param name="inputString"> Inputed string </param>
         public int CountSimilarSymbolsSequence(string inputString)
         {
-            if (String.IsNullOrEmpty(inputString))
+            if (ValidateString(inputString))
             {
                 return 0;
             }
@@ -27,12 +27,21 @@ namespace DEV_1
         /// <param name="inputString"> Inputed string </param>
         public int CountDifferentSymbolsSequence(string inputString)
         {
-            if(String.IsNullOrEmpty(inputString))
+            if(ValidateString(inputString))
             {
                 return 0;
             }
 
             return CountSequence(inputString, (x, y) => x != y);
+        }
+
+        private bool ValidateString(string inputString)
+        {
+            if (inputString == null)
+            {
+                throw new ArgumentNullException();
+            }
+            return inputString == String.Empty;
         }
 
         /// <summary>
