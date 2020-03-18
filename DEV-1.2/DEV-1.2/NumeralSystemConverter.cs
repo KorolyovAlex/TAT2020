@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DEV_1._2
 {
+    /// <summary>
+    /// Converts decimal numbers to another numeral system
+    /// </summary>
     public class NumeralSystemConverter
     {
         private readonly Dictionary<string, string> _convertKeys = new Dictionary<string, string>()
@@ -30,9 +33,16 @@ namespace DEV_1._2
             {"19", "J" }
         };
 
+        /// <summary>
+        /// Convert given number to new numeral system with given base
+        /// </summary>
+        /// <param name="number">The number which will be converted</param>
+        /// <param name="systemBase">The base of the new numeral system</param>
+        /// <returns></returns>
         public string ConvertNumber(uint number, uint systemBase)
         {
-            ValidateValue(systemBase);
+            ValidateBaseValue(systemBase);
+
             StringBuilder result = new StringBuilder();
             uint remaindedValue = number;
 
@@ -46,9 +56,13 @@ namespace DEV_1._2
             return result.ToString();
         }
 
-        private void ValidateValue(uint systemBase)
+        /// <summary>
+        /// Validating value of new system base to correspond the conditions
+        /// </summary>
+        /// <param name="systemBase"></param>
+        private void ValidateBaseValue(uint systemBase)
         {
-            if (systemBase < 3 || systemBase > 20)
+            if (systemBase < 2 || systemBase > 20)
             {
                 throw new ArgumentException($"Numeral system base value {systemBase} out of range (3-20)");
             }
