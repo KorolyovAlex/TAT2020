@@ -9,28 +9,31 @@ namespace DEV_1._2
     /// </summary>
     public class NumeralSystemConverter
     {
+        private const byte minBaseValue = 2;
+        private const byte maxBaseValue = 20;
+        
         private readonly Dictionary<string, string> _convertKeys = new Dictionary<string, string>()
         {
-            {"0", "0" },
-            {"1", "1" },
-            {"2", "2" },
-            {"3", "3" },
-            {"4", "4" },
-            {"5", "5" },
-            {"6", "6" },
-            {"7", "7" },
-            {"8", "8" },
-            {"9", "9" },
-            {"10", "A" },
-            {"11", "B" },
-            {"12", "C" },
-            {"13", "D" },
-            {"14", "E" },
-            {"15", "F" },
-            {"16", "G" },
-            {"17", "H" },
-            {"18", "I" },
-            {"19", "J" }
+            {"0", "0"},
+            {"1", "1"},
+            {"2", "2"},
+            {"3", "3"},
+            {"4", "4"},
+            {"5", "5"},
+            {"6", "6"},
+            {"7", "7"},
+            {"8", "8"},
+            {"9", "9"},
+            {"10", "A"},
+            {"11", "B"},
+            {"12", "C"},
+            {"13", "D"},
+            {"14", "E"},
+            {"15", "F"},
+            {"16", "G"},
+            {"17", "H"},
+            {"18", "I"},
+            {"19", "J"}
         };
 
         /// <summary>
@@ -62,9 +65,9 @@ namespace DEV_1._2
         /// <param name="systemBase"></param>
         private void ValidateBaseValue(uint systemBase)
         {
-            if (systemBase < 2 || systemBase > 20)
+            if (systemBase < minBaseValue || systemBase > maxBaseValue)
             {
-                throw new ArgumentException($"Numeral system base value {systemBase} out of range (3-20)");
+                throw new ArgumentException($"Numeral system base value {systemBase} out of range ({minBaseValue}-{maxBaseValue})");
             }
         }
     }
