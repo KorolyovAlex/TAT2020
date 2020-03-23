@@ -1,22 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DEV_1._3
 {
     class Truck : Vehicle
     {
+        private const ushort MIN_LOAD_CAPACITY = 500;
 
-        public Truck(Engine engine, Chassis chassis, Transmission transmission, string model) : base(engine, chassis, transmission, model)
+        private ushort _loadCapacity;
+
+        
+
+        public Truck(ushort loadCapacity, Engine engine, Chassis chassis, Transmission transmission, string model) : base(engine, chassis, transmission, model)
         {
+            LoadCapacity = loadCapacity;
+        }
 
+        public ushort LoadCapacity
+        {
+            get => _loadCapacity;
+            set
+            {
+                if (value < MIN_LOAD_CAPACITY)
+                {
+                    throw new ArgumentException("The value for truck load capacity is too low");
+                }
+
+                _loadCapacity = value;
+            }
         }
 
         public new string GetInfo()
         {
-            return $"Truck:\nNumber of seats: {_seatsNumber}\n{base.GetInfo()}";
+            return $"Truck:\nCarrying capacity: {LoadCapacity}\n{base.GetInfo()}";
         }
     }
 }

@@ -4,28 +4,27 @@ namespace DEV_1._3
 {
     class Bus : Vehicle
     {
-        private const byte minSeatsNumber = 10;
+        private const byte MIN_SEATS_NUMBER = 10;
 
         private byte _seatsNumber;
-
-        public byte SeatsNumber
-        {
-            get
-            {
-                return _seatsNumber;
-            }
-            set
-            {
-                if(value < minSeatsNumber)
-                {
-                    throw new ArgumentException();
-                }
-            }
-        }
 
         public Bus(byte seatsNumber, Engine engine, Chassis chassis, Transmission transmission, string model) : base(engine, chassis, transmission, model)
         {
             SeatsNumber = seatsNumber;
+        }
+
+        public byte SeatsNumber
+        {
+            get => _seatsNumber;
+            set
+            {
+                if (value < MIN_SEATS_NUMBER)
+                {
+                    throw new ArgumentException($"The bus can't have less than {MIN_SEATS_NUMBER} seats");
+                }
+
+                _seatsNumber = value;
+            }
         }
 
         public new string GetInfo()
