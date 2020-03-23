@@ -3,14 +3,19 @@
     class Transmission
     {
         public string Type { get; private set; }
-        public int GearsNumber { get; private set; }
-        public string Producer { get; private set; }
+        public byte GearsNumber { get; private set; }
+        public string Manufacturer { get; private set; }
 
-        public Transmission(string type, int gearsNumber, string producer)
+        public Transmission(string type, byte gearsNumber, string manufacturer)
         {
             Type = type;
             GearsNumber = gearsNumber;
-            Producer = producer;
+            Manufacturer = manufacturer;
+        }
+
+        public string GetInfo()
+        {
+            return $"Transmission:\nType: {Type}\nNumber of gears: {GearsNumber}\nManufacturer: {Manufacturer}\n";
         }
     }
 }

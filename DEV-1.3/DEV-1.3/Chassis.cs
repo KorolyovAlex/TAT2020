@@ -2,15 +2,20 @@
 {
     class Chassis
     {
-        public int WheelsNumber { get; private set; }
+        public byte WheelsNumber { get; private set; }
         public string SerialNumber { get; private set; }
-        public int MaxLoad { get; private set; }
+        public ushort MaxLoad { get; private set; }
 
-        public Chassis(int wheelsNumber, string serialNumber, int maxLoad)
+        public Chassis(byte wheelsNumber, string serialNumber, ushort maxLoad)
         {
             WheelsNumber = wheelsNumber;
             SerialNumber = serialNumber;
             MaxLoad = MaxLoad;
+        }
+
+        public string GetInfo()
+        {
+            return $"Chassis:\nSerial number: {SerialNumber}\nNumber of wheels: {WheelsNumber}\nMaximum load: {MaxLoad}\n";
         }
     }
 }
