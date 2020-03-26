@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    class Scooter : Vehicle
+    public class Scooter : Vehicle
     {
         private const byte MIN_SPEED = 40;
 

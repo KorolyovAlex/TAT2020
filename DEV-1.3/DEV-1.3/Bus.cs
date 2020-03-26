@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    class Bus : Vehicle
+    public class Bus : Vehicle
     {
         private const byte MIN_SEATS_NUMBER = 10;
 

@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    class Truck : Vehicle
+    public class Truck : Vehicle
     {
         private const ushort MIN_LOAD_CAPACITY = 500;
 

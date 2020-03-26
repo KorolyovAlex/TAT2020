@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    abstract class Vehicle
+    public abstract class Vehicle
     {
         private Engine _engine;
         private Chassis _chassis;

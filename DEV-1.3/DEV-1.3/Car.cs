@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    class Car : Vehicle
+    public class Car : Vehicle
     {
         private string _type;
 

@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    class Engine
+    public class Engine
     {
         private const float MIN_CAPACITY = 1.0f;
         private const ushort MIN_POWER = 100;

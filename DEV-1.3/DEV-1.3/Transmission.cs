@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    class Transmission
+    public class Transmission
     {
         private const byte MIN_GEARS_NUMBER = 4;
 

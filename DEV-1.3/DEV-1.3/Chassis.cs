@@ -2,7 +2,7 @@
 
 namespace DEV_1._3
 {
-    class Chassis
+    public class Chassis
     {
         private const byte MIN_WHEELS_NUMBER = 2;
         private const ushort MIN_LOAD = 100;
