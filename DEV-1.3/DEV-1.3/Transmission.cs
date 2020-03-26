@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Linq;
 
 namespace DEV_1._3
 {
     class Transmission
     {
         private const byte MIN_GEARS_NUMBER = 4;
-        private const string VALID_CHARACTERS = "1234567890AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz-";
 
         private string _type;
         private byte _gearsNumber;
@@ -24,7 +22,10 @@ namespace DEV_1._3
             get => _type;
             private set
             {
-                ValidateStringValue(value);
+                if (!StringValueValidator.ValidateStringValue(value))
+                {
+                    throw new ArgumentException("Invalid string value for transmission type");
+                }
 
                 _type = value;
             }
@@ -49,7 +50,10 @@ namespace DEV_1._3
             get => _manufacturer;
             private set
             {
-                ValidateStringValue(value);
+                if (!StringValueValidator.ValidateStringValue(value))
+                {
+                    throw new ArgumentException("Invalid string value for transmission manufacturer");
+                }
 
                 _manufacturer = value;
             }
@@ -58,22 +62,6 @@ namespace DEV_1._3
         public string GetInfo()
         {
             return $"Transmission:\nType: {Type}\nNumber of gears: {GearsNumber}\nManufacturer: {Manufacturer}\n";
-        }
-
-        private void ValidateStringValue(string value)
-        {
-            if (String.IsNullOrWhiteSpace(value))
-            {
-                throw new ArgumentException("Invalid string argument");
-            }
-
-            foreach (char character in value)
-            {
-                if (!VALID_CHARACTERS.Contains(character))
-                {
-                    throw new FormatException($"Argument {value} contains invalid character {character}");
-                }
-            }
         }
     }
 }

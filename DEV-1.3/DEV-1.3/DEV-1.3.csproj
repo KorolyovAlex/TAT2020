@@ -50,6 +50,7 @@
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scooter.cs" />
+    <Compile Include="StringValueValidator.cs" />
     <Compile Include="Transmission.cs" />
     <Compile Include="Truck.cs" />
     <Compile Include="Vehicle.cs" />

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Linq;
 
 namespace DEV_1._3
 {
     abstract class Vehicle
     {
-        private const string VALID_CHARACTERS = "1234567890AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz-. ";
-
         private Engine _engine;
         private Chassis _chassis;
         private Transmission _transmission;
@@ -49,31 +46,15 @@ namespace DEV_1._3
 
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get => _name;
             protected set
             {
-                ValidateStringValue(value);
+                if (!StringValueValidator.ValidateStringValue(value))
+                {
+                    throw new ArgumentException("Invalid string value for vehicle name");
+                }
 
                 _name = value;
-            }
-        }
-
-        protected void ValidateStringValue(string value)
-        {
-            if (String.IsNullOrWhiteSpace(value))
-            {
-                throw new ArgumentException("Invalid string argument");
-            }
-
-            foreach (char character in value)
-            {
-                if (!VALID_CHARACTERS.Contains(character))
-                {
-                    throw new FormatException($"Argument {value} contains invalid character {character}");
-                }
             }
         }
 

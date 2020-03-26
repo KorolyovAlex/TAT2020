@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace DEV_1._3
 {
@@ -7,7 +6,6 @@ namespace DEV_1._3
     {
         private const float MIN_CAPACITY = 1.0f;
         private const ushort MIN_POWER = 100;
-        private const string VALID_CHARACTERS = "1234567890AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz-";
 
         private ushort _power;
         private float _capacity;
@@ -29,7 +27,7 @@ namespace DEV_1._3
             {
                 if(value < MIN_POWER)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException($"Engine power value can't be less than {MIN_POWER}");
                 }
 
                 _power = value;
@@ -43,7 +41,7 @@ namespace DEV_1._3
             {
                 if(value < MIN_CAPACITY)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException($"Engine capacity value can't be less than {MIN_CAPACITY}");
                 }
 
                 _capacity = value;
@@ -55,7 +53,10 @@ namespace DEV_1._3
             get => _type;
             private set
             {
-                ValidateStringValue(value);
+                if (!StringValueValidator.ValidateStringValue(value))
+                {
+                    throw new ArgumentException("Invalid string value for engine type");
+                }
 
                 _type = value;
             }
@@ -66,7 +67,10 @@ namespace DEV_1._3
             get => _serialNumber;
             private set
             {
-                ValidateStringValue(value);
+                if (!StringValueValidator.ValidateStringValue(value))
+                {
+                    throw new ArgumentException("Invalid string value for engine serial number");
+                }
 
                 _serialNumber = value;
             }
@@ -75,22 +79,6 @@ namespace DEV_1._3
         public string GetInfo()
         {
             return $"Engine:\nSerial number: {SerialNumber}\nType: {Type}\nPower: {Power}\nCapacity: {Capacity}\n";
-        }
-
-        private void ValidateStringValue(string value)
-        {
-            if (String.IsNullOrWhiteSpace(value))
-            {
-                throw new ArgumentException("Invalid string argument");
-            }
-
-            foreach (char character in value)
-            {
-                if (!VALID_CHARACTERS.Contains(character))
-                {
-                    throw new FormatException($"Argument {value} contains invalid character {character}");
-                }
-            }
         }
     }
 }

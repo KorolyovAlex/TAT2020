@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace DEV_1._3
 {
@@ -7,7 +6,6 @@ namespace DEV_1._3
     {
         private const byte MIN_WHEELS_NUMBER = 2;
         private const ushort MIN_LOAD = 100;
-        private const string VALID_CHARACTERS = "1234567890AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz-";
 
         private byte _wheelsNumber;
         private string _serialNumber;
@@ -38,7 +36,10 @@ namespace DEV_1._3
             get => _serialNumber;
             private set
             {
-                ValidateStringValue(value);
+                if (!StringValueValidator.ValidateStringValue(value))
+                {
+                    throw new ArgumentException("Invalid string value for chassis serial number");
+                }
 
                 _serialNumber = value;
             }
@@ -60,22 +61,6 @@ namespace DEV_1._3
         public string GetInfo()
         {
             return $"Chassis:\nSerial number: {SerialNumber}\nNumber of wheels: {WheelsNumber}\nMaximum load: {MaxLoad}\n";
-        }
-
-        private void ValidateStringValue(string value)
-        {
-            if (String.IsNullOrWhiteSpace(value))
-            {
-                throw new ArgumentException("Invalid string argument");
-            }
-
-            foreach (char character in value)
-            {
-                if (!VALID_CHARACTERS.Contains(character))
-                {
-                    throw new FormatException($"Argument {value} contains invalid character {character}");
-                }
-            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace DEV_1._3
+﻿using System;
+
+namespace DEV_1._3
 {
     class Car : Vehicle
     {
@@ -14,7 +16,10 @@
             get => _type;
             private set
             {
-                ValidateStringValue(value);
+                if (!StringValueValidator.ValidateStringValue(value))
+                {
+                    throw new ArgumentException("Invalid string value for car type");
+                }
 
                 _type = value;
             }
