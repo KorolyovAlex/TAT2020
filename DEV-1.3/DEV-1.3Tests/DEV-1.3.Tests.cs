@@ -42,6 +42,18 @@ namespace DEV_1._3.Tests
     }
 
     [TestFixture]
+    public class TransmissionTests
+    {
+        [TestCase("", 6, "Suzuki")]
+        [TestCase("type", 1, "BMW")]
+        [TestCase("type", 6, "  ")]
+        public void ChassisConstructorThrowsArgumentException(string type, byte gearsNumber, string manufacturer)
+        {
+            Assert.Throws<ArgumentException>(delegate { var transmission = new Transmission(type, gearsNumber, manufacturer); });
+        }
+    }
+
+    [TestFixture]
     public class BusTests
     {
         Engine engine = new Engine(123, 123, "abc", "12-98");
