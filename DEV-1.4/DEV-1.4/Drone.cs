@@ -12,7 +12,6 @@ namespace DEV_1._4
 
         private byte _speed;
 
-
         public Drone(Point location, byte speed)
         {
             Location = location;
@@ -35,6 +34,10 @@ namespace DEV_1._4
             }
         }
 
+        /// <summary>
+        /// Changes the current location of drone
+        /// </summary>
+        /// <param name="newLocation">New location for drone</param>
         public void FlyTo(Point newLocation)
         {
             if(Location.GetDistance(newLocation) > MAX_FLIGHT_DISTANCE)
@@ -45,6 +48,11 @@ namespace DEV_1._4
             Location = newLocation;
         }
 
+        /// <summary>
+        /// Counts time for drone to get to argument location
+        /// </summary>
+        /// <param name="endPoint">The end location of flight</param>
+        /// <returns>The flight time</returns>
         public double GetFlyTime(Point endPoint)
         {
             double distance = Location.GetDistance(endPoint);

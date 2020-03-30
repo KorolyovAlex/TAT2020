@@ -14,11 +14,20 @@
 
         public Point Location { get; set; }
 
+        /// <summary>
+        /// Changes the current location of plane
+        /// </summary>
+        /// <param name="newLocation">New location for plane</param>
         public void FlyTo(Point newLocation)
         {
             Location = newLocation;
         }
 
+        /// <summary>
+        /// Counts time for plane to get to argument location
+        /// </summary>
+        /// <param name="endPoint">The end location of flight</param>
+        /// <returns>The flight time</returns>
         public double GetFlyTime(Point endPoint)
         {
             uint currentSpeed = BASE_SPEED;
