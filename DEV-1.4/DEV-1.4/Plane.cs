@@ -1,6 +1,6 @@
 ﻿namespace DEV_1._4
 {
-    class Plane : IFlyable
+    public class Plane : IFlyable
     {
         private const uint BASE_SPEED = 200;
         private const double ACCELERATION_DISTANCE = 10;

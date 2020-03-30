@@ -2,7 +2,7 @@
 
 namespace DEV_1._4
 {
-    class Drone : IFlyable
+    public class Drone : IFlyable
     {
         private const int MAX_FLIGHT_DISTANCE = 1000;
         private const double FLIGHT_TIME_WITHOUT_STOPS = 10f / 60;

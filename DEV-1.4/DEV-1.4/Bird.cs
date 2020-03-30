@@ -2,7 +2,7 @@
 
 namespace DEV_1._4
 {
-    class Bird : IFlyable
+    public class Bird : IFlyable
     {
         private const int MAX_SPEED = 21;
 

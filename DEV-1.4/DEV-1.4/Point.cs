@@ -2,13 +2,13 @@
 
 namespace DEV_1._4
 {
-    struct Point
+    public struct Point
     {
-        private const int MIN_VALUE = 0;
+        const int MIN_VALUE = 0;
 
-        private float _coordinateX;
-        private float _coordinateY;
-        private float _coordinateZ;
+        float _coordinateX;
+        float _coordinateY;
+        float _coordinateZ;
 
         /// <summary>
         /// Constructor for Point struct
@@ -16,7 +16,7 @@ namespace DEV_1._4
         /// <param name="x">Coordinate x value</param>
         /// <param name="y">Coordinate y value</param>
         /// <param name="z">Coordinate z value</param>
-        public Point(int x = 0, int y = 0, int z = 0)
+        public Point(float x = 0, float y = 0, float z = 0)
         {
             _coordinateX = MIN_VALUE;
             _coordinateY = MIN_VALUE;
