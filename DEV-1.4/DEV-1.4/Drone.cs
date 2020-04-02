@@ -4,13 +4,13 @@ namespace DEV_1._4
 {
     public class Drone : IFlyable
     {
-        private const int MAX_FLIGHT_DISTANCE = 1000;
-        private const double FLIGHT_TIME_WITHOUT_STOPS = 10f / 60;
-        private const double STOP_TIME = 1f / 60;
-        private const uint MIN_SPEED = 5;
-        private const uint MAX_SPEED = 160;
+        private const int MAX_FLIGHT_DISTANCE = 1000;  //in km
+        private const double FLIGHT_TIME_WITHOUT_STOPS = 10f / 60;  //in hours
+        private const double STOP_TIME = 1f / 60;  //in hours
+        private const uint MIN_SPEED = 5;  //in km/h
+        private const uint MAX_SPEED = 160;  //in km/h
 
-        private byte _speed;
+        private byte _speed;  //in km/h
 
         public Drone(Point location, byte speed)
         {
@@ -18,7 +18,7 @@ namespace DEV_1._4
             Speed = speed;
         }
 
-        public Point Location { get; set; }
+        public Point Location { get; private set; }
 
         public byte Speed
         {
@@ -52,7 +52,7 @@ namespace DEV_1._4
         /// Counts time for drone to get to argument location
         /// </summary>
         /// <param name="endPoint">The end location of flight</param>
-        /// <returns>The flight time</returns>
+        /// <returns>The flight time in hours</returns>
         public double GetFlyTime(Point endPoint)
         {
             double distance = Location.GetDistance(endPoint);

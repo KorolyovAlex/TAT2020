@@ -4,9 +4,9 @@ namespace DEV_1._4
 {
     public class Bird : IFlyable
     {
-        private const int MAX_SPEED = 21;
+        private const int MAX_SPEED = 21;  //in km/h
 
-        private readonly byte _speed;
+        private readonly byte _speed;  //in km/h
 
         public Bird(Point location)
         {
@@ -14,7 +14,7 @@ namespace DEV_1._4
             Location = location;
         }
 
-        public Point Location { get; set; }
+        public Point Location { get; private set; }
 
         /// <summary>
         /// Changes the current location of bird
@@ -29,7 +29,7 @@ namespace DEV_1._4
         /// Counts time for bird to get to argument location
         /// </summary>
         /// <param name="endPoint">The end location of flight</param>
-        /// <returns>The flight time</returns>
+        /// <returns>The flight time in hours</returns>
         public double GetFlyTime(Point endPoint)
         {
             if (_speed == 0)

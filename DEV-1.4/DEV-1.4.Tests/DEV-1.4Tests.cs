@@ -10,7 +10,7 @@ namespace DEV_1._4.Tests
 
         [TestCase(1)]
         [TestCase(162)]
-        public void DroneSpeedThrowsArgumentException(byte newSpeed)
+        public void DroneSpeedOutOfRangeValueThrowsArgumentException(byte newSpeed)
         {       
             Assert.Throws<ArgumentException>(delegate { drone.Speed = newSpeed; });
         }
@@ -19,6 +19,12 @@ namespace DEV_1._4.Tests
         public void GetFlyTimeTests(float pointX, float pointY, float pointZ, float expectedValue)
         {
             Assert.AreEqual(expectedValue, (float)drone.GetFlyTime(new Point(pointX, pointY, pointZ)));
+        }
+
+        [TestCase(110, 210, 210, 55)]
+        public void GetFlyTimeDistanceOutOfRangeThrowsException(float pointX, float pointY, float pointZ, float expectedValue)
+        {
+            Assert.Throws<ArgumentException>(delegate { drone.GetFlyTime(new Point(pointX, pointY, pointZ)); });
         }
     }
 
@@ -38,25 +44,19 @@ namespace DEV_1._4.Tests
     public class PointTests
     {
         [TestCase(-2.5f)]
-        [TestCase(-4)]
-        [TestCase(-620)]
-        public void PointCoordinateXThrowsArgumentException(float xValue)
+        public void PointCoordinateXNegativeValueThrowsArgumentException(float xValue)
         {
             Assert.Throws<ArgumentException>(delegate { Point point = new Point(xValue, 0, 0); });
         }
 
         [TestCase(-2.5f)]
-        [TestCase(-4)]
-        [TestCase(-620)]
-        public void PointCoordinateYThrowsArgumentException(float yValue)
+        public void PointCoordinateYNegativeValueThrowsArgumentException(float yValue)
         {
             Assert.Throws<ArgumentException>(delegate { Point point = new Point(0, yValue, 0); });
         }
 
         [TestCase(-2.5f)]
-        [TestCase(-4)]
-        [TestCase(-620)]
-        public void PointCoordinateZThrowsArgumentException(float zValue)
+        public void PointCoordinateZNegativeValueThrowsArgumentException(float zValue)
         {
             Assert.Throws<ArgumentException>(delegate { Point point = new Point(0, 0, zValue); });
         }

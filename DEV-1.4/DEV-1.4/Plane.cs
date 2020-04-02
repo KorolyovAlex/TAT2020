@@ -2,17 +2,17 @@
 {
     public class Plane : IFlyable
     {
-        private const uint BASE_SPEED = 200;
-        private const double ACCELERATION_DISTANCE = 10;
-        private const uint ACCELERATION = 10;
-        private const uint MAX_SPEED = 950;
+        private const uint BASE_SPEED = 200;  //in km/h
+        private const double ACCELERATION_DISTANCE = 10;  //in km
+        private const uint ACCELERATION = 10; //in km/h
+        private const uint MAX_SPEED = 950;  //in km/h
 
         public Plane(Point location)
         {
             Location = location;
         }
 
-        public Point Location { get; set; }
+        public Point Location { get; private set; }
 
         /// <summary>
         /// Changes the current location of plane
@@ -27,7 +27,7 @@
         /// Counts time for plane to get to argument location
         /// </summary>
         /// <param name="endPoint">The end location of flight</param>
-        /// <returns>The flight time</returns>
+        /// <returns>The flight time in hours</returns>
         public double GetFlyTime(Point endPoint)
         {
             uint currentSpeed = BASE_SPEED;
