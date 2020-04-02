@@ -9,36 +9,27 @@ namespace DEV_1._3
         {
             try
             {
-                List<Vehicle> carPark = new List<Vehicle>();
+                List<Vehicle> vehiclePark = new List<Vehicle>();
+                IVehicleFactory factory = new CarAutoTransmissionPetrolEngineFactory();
 
-                Bus bus = new Bus(82, new Engine(250, 10, "Gas", "AP76NU"),
-                                  new Chassis(8, "ABCD", 4750),
-                                  new Transmission("typeA", 5, "SomeFactoryA"),
-                                  "MAZ 102D");
-                carPark.Add(bus);
+                vehiclePark.Add(factory.ProduceVehicle());
+                vehiclePark.Add(factory.ProduceVehicle());
 
-                Car car = new Car("Universal", new Engine(250, 6, "Electriacal", "14YUM9"),
-                                  new Chassis(4, "DCBA", 2000),
-                                  new Transmission("typeB", 6, "SomeFactoryB"),
-                                  "Audi A6");
-                carPark.Add(car);
+                factory = new CarMechanicTransmissionFactory();
 
-                Scooter scooter = new Scooter(110, new Engine(250, 5, "Petrol", "MLOI8"),
-                                              new Chassis(2, "AD-CD", 400),
-                                              new Transmission("typeC", 6, "SomeFactoryC"),
-                                              "SUZUKI F");
-                carPark.Add(scooter);
+                vehiclePark.Add(factory.ProduceVehicle());
+                vehiclePark.Add(factory.ProduceVehicle());
+                vehiclePark.Add(factory.ProduceVehicle());
 
-                Truck truck = new Truck(1730, new Engine(250, 12, "Diesel", "1982-3AA"),
-                                        new Chassis(6, "POJK", 7000),
-                                        new Transmission("typeD", 4, "SomeFactoryD"),
-                                        "JAC LE12");
-                carPark.Add(truck);
+                factory = new BusFactory();
 
-                Console.WriteLine(bus.GetInfo());
-                Console.WriteLine(car.GetInfo());
-                Console.WriteLine(scooter.GetInfo());
-                Console.WriteLine(truck.GetInfo());
+                vehiclePark.Add(factory.ProduceVehicle());
+                vehiclePark.Add(factory.ProduceVehicle());
+
+                factory = new TruckMechanicTransmissionFactory();
+
+                vehiclePark.Add(factory.ProduceVehicle());
+                vehiclePark.Add(factory.ProduceVehicle());
             }
             catch(Exception ex)
             {

@@ -10,6 +10,17 @@ namespace DEV_1._3
         {
             Type = type;
         }
+        
+        public Car(Engine engine, Transmission transmission)
+        {
+            this.Engine = engine;
+            this.Transmission = transmission;
+        }
+
+        public Car(Transmission transmission)
+        {
+            this.Transmission = transmission;
+        }
 
         public string Type
         {
@@ -25,7 +36,7 @@ namespace DEV_1._3
             }
         }
 
-        public new string GetInfo()
+        public override string GetInfo()
         {
             return $"Car:\nType: {Type}\n{base.GetInfo()}";
         }

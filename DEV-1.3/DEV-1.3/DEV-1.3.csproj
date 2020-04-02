@@ -44,7 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus.cs" />
+    <Compile Include="BusFactory.cs" />
     <Compile Include="Car.cs" />
+    <Compile Include="CarAutoTransmissionPetrolEngineFactory.cs" />
+    <Compile Include="CarMechanicTransmissionFactory.cs" />
     <Compile Include="Chassis.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="EntryPoint.cs" />
@@ -53,7 +56,9 @@
     <Compile Include="StringValueValidator.cs" />
     <Compile Include="Transmission.cs" />
     <Compile Include="Truck.cs" />
+    <Compile Include="TruckMechanicTransmissionFactory.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="IVehicleFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

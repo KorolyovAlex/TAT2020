@@ -27,7 +27,7 @@ namespace DEV_1._3
             }
         }
 
-        public new string GetInfo()
+        public override string GetInfo()
         {
             return $"Scooter:\nMax speed: {MaxSpeed}\n{base.GetInfo()}";
         }

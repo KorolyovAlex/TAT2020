@@ -15,6 +15,11 @@ namespace DEV_1._3
             LoadCapacity = loadCapacity;
         }
 
+        public Truck(Transmission transmission)
+        {
+            this.Transmission = transmission;
+        }
+
         public ushort LoadCapacity
         {
             get => _loadCapacity;
@@ -29,7 +34,7 @@ namespace DEV_1._3
             }
         }
 
-        public new string GetInfo()
+        public override string GetInfo()
         {
             return $"Truck:\nCarrying capacity: {LoadCapacity}\n{base.GetInfo()}";
         }

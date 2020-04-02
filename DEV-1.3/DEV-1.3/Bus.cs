@@ -13,6 +13,11 @@ namespace DEV_1._3
             SeatsNumber = seatsNumber;
         }
 
+        public Bus(byte seatsNumber)
+        {
+            this.SeatsNumber = seatsNumber;
+        }
+
         public byte SeatsNumber
         {
             get => _seatsNumber;
@@ -27,7 +32,7 @@ namespace DEV_1._3
             }
         }
 
-        public new string GetInfo()
+        public override string GetInfo()
         {
             return $"Bus:\nNumber of seats: {SeatsNumber}\n{base.GetInfo()}";
         }

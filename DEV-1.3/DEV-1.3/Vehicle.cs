@@ -9,6 +9,7 @@ namespace DEV_1._3
         private Transmission _transmission;
         private string _name;
 
+        public Vehicle() { }
         protected Vehicle(Engine engine, Chassis chassis, Transmission transmission, string name)
         {
             Engine = engine;
@@ -58,7 +59,7 @@ namespace DEV_1._3
             }
         }
 
-        protected string GetInfo()
+        public virtual string GetInfo()
         {
             return $"Name: {Name}\n\n{Engine.GetInfo()}\n{Transmission.GetInfo()}\n{Chassis.GetInfo()}";
         }
