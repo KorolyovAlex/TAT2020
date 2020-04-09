@@ -2,6 +2,9 @@
 
 namespace DEV_2._1.Commands
 {
+    /// <summary>
+    /// Class of the average price command
+    /// </summary>
     class AveragePriceCommand : ICommand
     {
         private CarDealership _carDealership;

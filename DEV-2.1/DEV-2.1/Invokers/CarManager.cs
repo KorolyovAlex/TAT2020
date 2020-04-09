@@ -3,6 +3,9 @@ using DEV_2._1.Commands;
 
 namespace DEV_2._1.Invokers
 {
+    /// <summary>
+    /// Class of the invoker for commands
+    /// </summary>
     class CarManager
     {
         private const string COUNT_TYPES_COMMAND = "count types";
@@ -13,11 +16,18 @@ namespace DEV_2._1.Invokers
         private CarDealership _carDealership;
         private ICommand _command;
 
+        /// <summary>
+        /// Constructor of the class
+        /// </summary>
+        /// <param name="carDealership">Reciever</param>
         public CarManager(CarDealership carDealership)
         {
             _carDealership = carDealership;
         }
 
+        /// <summary>
+        /// Method that allows user to add cars to CarDealership Cars list
+        /// </summary>
         public void EnterCars()
         {
             while(true)
@@ -52,6 +62,9 @@ namespace DEV_2._1.Invokers
             Console.Clear();
         }
 
+        /// <summary>
+        /// Method that allows user to enter commands
+        /// </summary>
         public void ChooseCommand()
         {
             while (true)
@@ -107,11 +120,18 @@ namespace DEV_2._1.Invokers
             }
         }
 
+        /// <summary>
+        /// Method that sets new command
+        /// </summary>
+        /// <param name="newCommand"></param>
         private void SetCommand(ICommand newCommand)
         {
             _command = newCommand;
         }
 
+        /// <summary>
+        /// Method that executes the command
+        /// </summary>
         private void ExecuteCommand()
         {
             _command?.Execute();

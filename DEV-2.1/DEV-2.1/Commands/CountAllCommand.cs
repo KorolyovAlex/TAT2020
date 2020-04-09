@@ -2,6 +2,9 @@
 
 namespace DEV_2._1.Commands
 {
+    /// <summary>
+    /// Class of the count all command
+    /// </summary>
     class CountAllCommand : ICommand
     {
         private CarDealership _carDealership;

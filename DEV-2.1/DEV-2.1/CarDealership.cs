@@ -6,8 +6,6 @@ namespace DEV_2._1
 {
     class CarDealership
     {
-        private static readonly CarDealership _instance = new CarDealership();
-
         public List<Car> Cars { get; }
 
         private CarDealership()
@@ -15,7 +13,7 @@ namespace DEV_2._1
             Cars = new List<Car>();
         }
 
-        public static CarDealership Current => _instance;
+        public static CarDealership Current { get; } = new CarDealership();
 
         public void AddCars(Car car, uint amount)
         {
