@@ -1,4 +1,6 @@
-﻿namespace DEV_2._1
+﻿using System;
+
+namespace DEV_2._1
 {
     class Car
     {
@@ -16,9 +18,20 @@
             get => _price;
             set
             {
-                if(value > 0)
+                try
                 {
+                    if (value <= 0)
+                    {
+                        throw new ArgumentException("Incorrect price!");
+                    }
                     _price = value;
+                }
+                catch(ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Enter new car price: ");
+                    Int32.TryParse(Console.ReadLine(), out int price);
+                    Price = price;
                 }
             }
         }
