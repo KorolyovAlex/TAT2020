@@ -59,22 +59,5 @@ namespace DEV_2._1.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;cars&gt;
-        ///  &lt;car brand=&quot;Audi&quot;&gt;
-        ///    &lt;model&gt;A6&lt;/model&gt;
-        ///    &lt;price&gt;13500&lt;/price&gt;
-        ///    &lt;number&gt;12&lt;/number&gt;
-        ///  &lt;/car&gt;
-        ///&lt;/cars&gt;
-        ///.
-        /// </summary>
-        internal static string CarDB {
-            get {
-                return ResourceManager.GetString("CarDB", resourceCulture);
-            }
-        }
     }
 }

@@ -18,7 +18,8 @@ namespace DEV_2._1
         /// </summary>
         private CarDealership()
         {
-            xDoc = XDocument.Parse(Properties.Resources.CarDB);
+            xDoc = new XDocument();
+            xDoc = XDocument.Load("CarDB.xml");
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace DEV_2._1
             XmlSerializer serializer = new XmlSerializer(typeof(List<Car>));
             List<Car> carList = new List<Car>();
 
-            using (FileStream fs = new FileStream(Properties.Resources.CarDB, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("CarDB.xml", FileMode.OpenOrCreate))
             {
                 carList = (List<Car>)serializer.Deserialize(fs);
             }
@@ -46,12 +47,12 @@ namespace DEV_2._1
                 carList.Add(car);
             }
 
-            using (FileStream fs = new FileStream(Properties.Resources.CarDB, FileMode.Create))
+            using (FileStream fs = new FileStream("CarDb.xml", FileMode.Create))
             {
                 serializer.Serialize(fs, carList);
             }
 
-            xDoc = XDocument.Parse(Properties.Resources.CarDB);
+            xDoc = XDocument.Load("CarDB.xml");
         }
 
         /// <summary>
@@ -69,8 +70,6 @@ namespace DEV_2._1
         /// <returns>The average price of cars</returns>
         public double GetAveragePrice()
         {
-            XDocument xDoc = XDocument.Parse(Properties.Resources.CarDB);
-
             if (xDoc.Element("cars").Elements("car").Count() != 0)
             {
                 return xDoc.Element("cars").Elements("car").Select(x => Int32.Parse(x.Element("price").Value)).Average();
