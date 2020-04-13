@@ -8,7 +8,7 @@ namespace DEV_2._1.Commands
     class AveragePriceTypeCommand : ICommand
     {
         private CarDealership _carDealership;
-        private string _brand;
+        private readonly string _brand;
 
         public AveragePriceTypeCommand(CarDealership carDealership, string brand)
         {

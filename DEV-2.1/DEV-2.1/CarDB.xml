@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<cars xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <car>
+    <brand>Audi</brand>
+    <model>A6</model>
+    <price>19500</price>
+  </car>
+  <car>
+    <brand>Audi</brand>
+    <model>A6</model>
+    <price>19500</price>
+  </car>
+  <car>
+    <brand>BMW</brand>
+    <model>X6</model>
+    <price>43000</price>
+  </car>
+</cars>

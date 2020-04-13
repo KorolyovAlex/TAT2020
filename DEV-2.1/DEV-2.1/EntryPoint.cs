@@ -11,7 +11,6 @@ namespace DEV_2._1
         {
             var carDealership = CarDealership.Current;
             var manager = new CarManager(carDealership);
-            manager.EnterCars();
             manager.ChooseCommand();
         }
     }

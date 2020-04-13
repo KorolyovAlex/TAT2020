@@ -5,7 +5,8 @@ namespace DEV_2._1
     /// <summary>
     /// Class of car
     /// </summary>
-    class Car
+    [Serializable]
+    public class Car
     {
         private int _price;
 

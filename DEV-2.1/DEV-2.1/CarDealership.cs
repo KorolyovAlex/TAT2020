@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace DEV_2._1
 {
@@ -9,17 +12,13 @@ namespace DEV_2._1
    /// </summary>
     class CarDealership
     {
-        /// <summary>
-        /// List of cars in stock
-        /// </summary>
-        public List<Car> Cars { get; }
-
+        XDocument xDoc;
         /// <summary>
         /// Constructor of the class
         /// </summary>
         private CarDealership()
         {
-            Cars = new List<Car>();
+            xDoc = XDocument.Parse(Properties.Resources.CarDB);
         }
 
         /// <summary>
@@ -34,10 +33,25 @@ namespace DEV_2._1
         /// <param name="amount">Number of cars</param>
         public void AddCars(Car car, uint amount)
         {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Car>));
+            List<Car> carList = new List<Car>();
+
+            using (FileStream fs = new FileStream(Properties.Resources.CarDB, FileMode.OpenOrCreate))
+            {
+                carList = (List<Car>)serializer.Deserialize(fs);
+            }
+
             for (int i = 0; i < amount; i++)
             {
-                Cars.Add(car);
+                carList.Add(car);
             }
+
+            using (FileStream fs = new FileStream(Properties.Resources.CarDB, FileMode.Create))
+            {
+                serializer.Serialize(fs, carList);
+            }
+
+            xDoc = XDocument.Parse(Properties.Resources.CarDB);
         }
 
         /// <summary>
@@ -46,7 +60,7 @@ namespace DEV_2._1
         /// <returns>Number of cars</returns>
         public int GetCarCount()
         {
-            return Cars.Count;
+            return xDoc.Element("cars").Elements("car").Count();
         }
 
         /// <summary>
@@ -55,9 +69,11 @@ namespace DEV_2._1
         /// <returns>The average price of cars</returns>
         public double GetAveragePrice()
         {
-            if (Cars.Count != 0)
+            XDocument xDoc = XDocument.Parse(Properties.Resources.CarDB);
+
+            if (xDoc.Element("cars").Elements("car").Count() != 0)
             {
-                return Cars.Select(x => x.Price).Average();
+                return xDoc.Element("cars").Elements("car").Select(x => Int32.Parse(x.Element("price").Value)).Average();
             }
             return 0;
         }
@@ -69,9 +85,9 @@ namespace DEV_2._1
         /// <returns>The average price of certain brand cars</returns>
         public double GetAveragePriceByBrand(string brand)
         {
-            if (Cars.Any(x => x.Brand.ToLower() == brand.ToLower()))
+            if (xDoc.Element("cars").Elements("car").Any(x => x.Element("brand").Value.ToLower() == brand.ToLower()))
             {
-                return Cars.Where(x => x.Brand.ToLower() == brand.ToLower()).Select(x => x.Price).Average();
+                return xDoc.Element("cars").Elements("car").Where(x => x.Element("brand").Value.ToLower() == brand.ToLower()).Select(x => Int32.Parse(x.Element("price").Value)).Average();
             }
             throw new ArgumentException("There's no cars with such brand");
         }
@@ -82,7 +98,7 @@ namespace DEV_2._1
         /// <returns>The number of brands of cars</returns>
         public int GetTypesCount()
         {
-            return Cars.Select(x => x.Brand).Distinct().Count();
+            return xDoc.Element("cars").Elements("car").Select(x => x.Element("brand").Value).Distinct().Count();
         }
     }
 }

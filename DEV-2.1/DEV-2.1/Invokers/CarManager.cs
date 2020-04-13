@@ -8,6 +8,7 @@ namespace DEV_2._1.Invokers
     /// </summary>
     class CarManager
     {
+        private const string ADD_CARS_COMMAND = "add cars";
         private const string COUNT_TYPES_COMMAND = "count types";
         private const string COUNT_ALL_COMMAND = "count all";
         private const string AVERAGE_PRICE_COMMAND = "average price";
@@ -26,43 +27,6 @@ namespace DEV_2._1.Invokers
         }
 
         /// <summary>
-        /// Method that allows user to add cars to CarDealership Cars list
-        /// </summary>
-        public void EnterCars()
-        {
-            while(true)
-            {
-                try
-                {
-                    Console.WriteLine("Enter car brand: ");
-                    string brand = Console.ReadLine();
-
-                    Console.WriteLine("Enter car model: ");
-                    string model = Console.ReadLine();
-
-                    Console.WriteLine("Enter car price: ");
-                    Int32.TryParse(Console.ReadLine(), out int price);
-
-                    Console.WriteLine("Enter number of cars: ");
-                    UInt32.TryParse(Console.ReadLine(), out uint amount);
-
-                    _carDealership.AddCars(new Car(price, brand, model), amount);
-
-                    Console.WriteLine("Add more cars? (type no to exit): ");
-                    if (Console.ReadLine().ToLower() == "no")
-                    {
-                        break;
-                    }
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            Console.Clear();
-        }
-
-        /// <summary>
         /// Method that allows user to enter commands
         /// </summary>
         public void ChooseCommand()
@@ -76,6 +40,13 @@ namespace DEV_2._1.Invokers
 
                     switch (command)
                     {
+                        case ADD_CARS_COMMAND:
+                            {
+                                SetCommand(new AddCarsCommand(_carDealership));
+                                ExecuteCommand();
+                                Console.Clear();
+                                break;
+                            }
                         case COUNT_TYPES_COMMAND:
                             {
                                 SetCommand(new CountTypesCommand(_carDealership));
