@@ -21,8 +21,8 @@ namespace DEV_1._4.Tests
             Assert.AreEqual(expectedValue, (float)drone.GetFlyTime(new Point(pointX, pointY, pointZ)));
         }
 
-        [TestCase(110, 210, 210, 55)]
-        public void GetFlyTimeDistanceOutOfRangeThrowsException(float pointX, float pointY, float pointZ, float expectedValue)
+        [TestCase(1000, 1000, 1000)]
+        public void GetFlyTimeDistanceOutOfRangeThrowsException(float pointX, float pointY, float pointZ)
         {
             Assert.Throws<ArgumentException>(delegate { drone.GetFlyTime(new Point(pointX, pointY, pointZ)); });
         }
