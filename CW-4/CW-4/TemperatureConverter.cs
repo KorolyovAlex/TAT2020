@@ -5,7 +5,7 @@ namespace CW_4
     class TemperatureConverter : Converter
     {
         private const int F_TO_C_CONST = 32;
-        private const double FAHRENHEIT_TO_CELSIUS = 5 / 9;
+        private const double FAHRENHEIT_TO_CELSIUS = 5f / 9;
         private const int SYMBOLS_AFTER_DECIMAL_POINT = 2;
 
         public override double Convert(double value, string convertCommand)
@@ -35,7 +35,7 @@ namespace CW_4
 
         private double ConvertCelsiusToFahrenheit(double value)
         {
-            return Math.Round(value / FAHRENHEIT_TO_CELSIUS, SYMBOLS_AFTER_DECIMAL_POINT);
+            return Math.Round(value / FAHRENHEIT_TO_CELSIUS + F_TO_C_CONST, SYMBOLS_AFTER_DECIMAL_POINT);
         }
     }
 }
