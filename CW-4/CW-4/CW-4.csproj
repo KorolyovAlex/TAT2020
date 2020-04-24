@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertCommands.cs" />
     <Compile Include="Converter.cs" />
+    <Compile Include="ConverterCreator.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="FootsToMetersConverter.cs" />
+    <Compile Include="TemperatureConverter.cs" />
+    <Compile Include="LengthConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
